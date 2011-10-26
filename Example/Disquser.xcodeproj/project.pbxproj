@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		062A268E1457EBE5002E2427 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062A268D1457EBE5002E2427 /* QuartzCore.framework */; };
+		062ACC2D145859D000697444 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACBFA145859D000697444 /* MenuViewController.m */; };
+		062ACC2E145859D000697444 /* PostCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACBFC145859D000697444 /* PostCommentViewController.m */; };
+		062ACC2F145859D000697444 /* TableCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACBFE145859D000697444 /* TableCommentsViewController.m */; };
+		062ACC30145859D000697444 /* WebCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC00145859D000697444 /* WebCommentsViewController.m */; };
+		062ACC31145859D000697444 /* IACommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC03145859D000697444 /* IACommentCell.m */; };
+		062ACC32145859D000697444 /* PostCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 062ACC04145859D000697444 /* PostCommentViewController.xib */; };
+		062ACC33145859D000697444 /* Disquser-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 062ACC05145859D000697444 /* Disquser-Info.plist */; };
+		062ACC34145859D000697444 /* IAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC08145859D000697444 /* IAAppDelegate.m */; };
+		062ACC35145859D000697444 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC0C145859D000697444 /* AFHTTPClient.m */; };
+		062ACC36145859D000697444 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC0E145859D000697444 /* AFHTTPRequestOperation.m */; };
+		062ACC37145859D000697444 /* AFImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC10145859D000697444 /* AFImageCache.m */; };
+		062ACC38145859D000697444 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC12145859D000697444 /* AFImageRequestOperation.m */; };
+		062ACC39145859D000697444 /* AFJSONRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC14145859D000697444 /* AFJSONRequestOperation.m */; };
+		062ACC3A145859D000697444 /* AFNetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC16145859D000697444 /* AFNetworkActivityIndicatorManager.m */; };
+		062ACC3B145859D000697444 /* AFPropertyListRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC19145859D000697444 /* AFPropertyListRequestOperation.m */; };
+		062ACC3C145859D000697444 /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC1B145859D000697444 /* AFURLConnectionOperation.m */; };
+		062ACC3D145859D000697444 /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC1D145859D000697444 /* AFXMLRequestOperation.m */; };
+		062ACC3E145859D000697444 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC1F145859D000697444 /* UIImageView+AFNetworking.m */; };
+		062ACC41145859D000697444 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC28145859D000697444 /* JSONKit.m */; };
+		062ACC42145859D000697444 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 062ACC29145859D000697444 /* main.m */; };
+		062ACC43145859D000697444 /* disqus.html in Resources */ = {isa = PBXBuildFile; fileRef = 062ACC2B145859D000697444 /* disqus.html */; };
+		062ACC44145859D000697444 /* noavatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 062ACC2C145859D000697444 /* noavatar.png */; };
+		0636FF3014585AE7006ED012 /* IADisqusComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636FF2C14585AE7006ED012 /* IADisqusComment.m */; };
+		0636FF3114585AE7006ED012 /* IADisquser.m in Sources */ = {isa = PBXBuildFile; fileRef = 0636FF2F14585AE7006ED012 /* IADisquser.m */; };
+		0678BCF814586FCA00443AFB /* disqus-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 0678BCF414586FCA00443AFB /* disqus-logo.png */; };
+		0678BCF914586FCA00443AFB /* disqus-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0678BCF514586FCA00443AFB /* disqus-logo@2x.png */; };
+		0678BCFA14586FCA00443AFB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0678BCF614586FCA00443AFB /* icon.png */; };
+		0678BD011458705200443AFB /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0678BD001458705200443AFB /* icon@2x.png */; };
+		06B3445C145425730096CAFA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B3445B145425730096CAFA /* UIKit.framework */; };
+		06B3445E145425730096CAFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B3445D145425730096CAFA /* Foundation.framework */; };
+		06B34460145425730096CAFA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06B3445F145425730096CAFA /* CoreGraphics.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		062A268D1457EBE5002E2427 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		062ACBF9145859D000697444 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		062ACBFA145859D000697444 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		062ACBFB145859D000697444 /* PostCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostCommentViewController.h; sourceTree = "<group>"; };
+		062ACBFC145859D000697444 /* PostCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostCommentViewController.m; sourceTree = "<group>"; };
+		062ACBFD145859D000697444 /* TableCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCommentsViewController.h; sourceTree = "<group>"; };
+		062ACBFE145859D000697444 /* TableCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCommentsViewController.m; sourceTree = "<group>"; };
+		062ACBFF145859D000697444 /* WebCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebCommentsViewController.h; sourceTree = "<group>"; };
+		062ACC00145859D000697444 /* WebCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebCommentsViewController.m; sourceTree = "<group>"; };
+		062ACC02145859D000697444 /* IACommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IACommentCell.h; sourceTree = "<group>"; };
+		062ACC03145859D000697444 /* IACommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IACommentCell.m; sourceTree = "<group>"; };
+		062ACC04145859D000697444 /* PostCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCommentViewController.xib; sourceTree = "<group>"; };
+		062ACC05145859D000697444 /* Disquser-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Disquser-Info.plist"; path = "../Disquser-Info.plist"; sourceTree = "<group>"; };
+		062ACC06145859D000697444 /* Disquser-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Disquser-Prefix.pch"; path = "../Disquser-Prefix.pch"; sourceTree = "<group>"; };
+		062ACC07145859D000697444 /* IAAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IAAppDelegate.h; path = ../IAAppDelegate.h; sourceTree = "<group>"; };
+		062ACC08145859D000697444 /* IAAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IAAppDelegate.m; path = ../IAAppDelegate.m; sourceTree = "<group>"; };
+		062ACC0B145859D000697444 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
+		062ACC0C145859D000697444 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
+		062ACC0D145859D000697444 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		062ACC0E145859D000697444 /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		062ACC0F145859D000697444 /* AFImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageCache.h; sourceTree = "<group>"; };
+		062ACC10145859D000697444 /* AFImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageCache.m; sourceTree = "<group>"; };
+		062ACC11145859D000697444 /* AFImageRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFImageRequestOperation.h; sourceTree = "<group>"; };
+		062ACC12145859D000697444 /* AFImageRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFImageRequestOperation.m; sourceTree = "<group>"; };
+		062ACC13145859D000697444 /* AFJSONRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFJSONRequestOperation.h; sourceTree = "<group>"; };
+		062ACC14145859D000697444 /* AFJSONRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFJSONRequestOperation.m; sourceTree = "<group>"; };
+		062ACC15145859D000697444 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		062ACC16145859D000697444 /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		062ACC17145859D000697444 /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		062ACC18145859D000697444 /* AFPropertyListRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFPropertyListRequestOperation.h; sourceTree = "<group>"; };
+		062ACC19145859D000697444 /* AFPropertyListRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFPropertyListRequestOperation.m; sourceTree = "<group>"; };
+		062ACC1A145859D000697444 /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		062ACC1B145859D000697444 /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		062ACC1C145859D000697444 /* AFXMLRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFXMLRequestOperation.h; sourceTree = "<group>"; };
+		062ACC1D145859D000697444 /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
+		062ACC1E145859D000697444 /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
+		062ACC1F145859D000697444 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		062ACC27145859D000697444 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		062ACC28145859D000697444 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		062ACC29145859D000697444 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ../main.m; sourceTree = "<group>"; };
+		062ACC2B145859D000697444 /* disqus.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = disqus.html; sourceTree = "<group>"; };
+		062ACC2C145859D000697444 /* noavatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noavatar.png; sourceTree = "<group>"; };
+		0636FF2B14585AE7006ED012 /* IADisqusComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IADisqusComment.h; sourceTree = "<group>"; };
+		0636FF2C14585AE7006ED012 /* IADisqusComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IADisqusComment.m; sourceTree = "<group>"; };
+		0636FF2D14585AE7006ED012 /* IADisqusConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IADisqusConfig.h; sourceTree = "<group>"; };
+		0636FF2E14585AE7006ED012 /* IADisquser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IADisquser.h; sourceTree = "<group>"; };
+		0636FF2F14585AE7006ED012 /* IADisquser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IADisquser.m; sourceTree = "<group>"; };
+		0678BCF414586FCA00443AFB /* disqus-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disqus-logo.png"; sourceTree = "<group>"; };
+		0678BCF514586FCA00443AFB /* disqus-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disqus-logo@2x.png"; sourceTree = "<group>"; };
+		0678BCF614586FCA00443AFB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		0678BD001458705200443AFB /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
+		06B34457145425730096CAFA /* Disquser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Disquser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		06B3445B145425730096CAFA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		06B3445D145425730096CAFA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		06B3445F145425730096CAFA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		06B34454145425730096CAFA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				062A268E1457EBE5002E2427 /* QuartzCore.framework in Frameworks */,
+				06B3445C145425730096CAFA /* UIKit.framework in Frameworks */,
+				06B3445E145425730096CAFA /* Foundation.framework in Frameworks */,
+				06B34460145425730096CAFA /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		062ACBF7145859D000697444 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				062ACC07145859D000697444 /* IAAppDelegate.h */,
+				062ACC08145859D000697444 /* IAAppDelegate.m */,
+				062ACBF8145859D000697444 /* Controllers */,
+				062ACC01145859D000697444 /* Views */,
+				062ACC49145859F200697444 /* Supporting Files */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		062ACBF8145859D000697444 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				062ACBF9145859D000697444 /* MenuViewController.h */,
+				062ACBFA145859D000697444 /* MenuViewController.m */,
+				062ACBFB145859D000697444 /* PostCommentViewController.h */,
+				062ACBFC145859D000697444 /* PostCommentViewController.m */,
+				062ACBFD145859D000697444 /* TableCommentsViewController.h */,
+				062ACBFE145859D000697444 /* TableCommentsViewController.m */,
+				062ACBFF145859D000697444 /* WebCommentsViewController.h */,
+				062ACC00145859D000697444 /* WebCommentsViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		062ACC01145859D000697444 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				062ACC02145859D000697444 /* IACommentCell.h */,
+				062ACC03145859D000697444 /* IACommentCell.m */,
+				062ACC04145859D000697444 /* PostCommentViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		062ACC09145859D000697444 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0636FF2A14585AE7006ED012 /* IADisquser */,
+				062ACC0A145859D000697444 /* AFNetworking */,
+				062ACC26145859D000697444 /* JSONKit */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		062ACC0A145859D000697444 /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				062ACC0B145859D000697444 /* AFHTTPClient.h */,
+				062ACC0C145859D000697444 /* AFHTTPClient.m */,
+				062ACC0D145859D000697444 /* AFHTTPRequestOperation.h */,
+				062ACC0E145859D000697444 /* AFHTTPRequestOperation.m */,
+				062ACC0F145859D000697444 /* AFImageCache.h */,
+				062ACC10145859D000697444 /* AFImageCache.m */,
+				062ACC11145859D000697444 /* AFImageRequestOperation.h */,
+				062ACC12145859D000697444 /* AFImageRequestOperation.m */,
+				062ACC13145859D000697444 /* AFJSONRequestOperation.h */,
+				062ACC14145859D000697444 /* AFJSONRequestOperation.m */,
+				062ACC15145859D000697444 /* AFNetworkActivityIndicatorManager.h */,
+				062ACC16145859D000697444 /* AFNetworkActivityIndicatorManager.m */,
+				062ACC17145859D000697444 /* AFNetworking.h */,
+				062ACC18145859D000697444 /* AFPropertyListRequestOperation.h */,
+				062ACC19145859D000697444 /* AFPropertyListRequestOperation.m */,
+				062ACC1A145859D000697444 /* AFURLConnectionOperation.h */,
+				062ACC1B145859D000697444 /* AFURLConnectionOperation.m */,
+				062ACC1C145859D000697444 /* AFXMLRequestOperation.h */,
+				062ACC1D145859D000697444 /* AFXMLRequestOperation.m */,
+				062ACC1E145859D000697444 /* UIImageView+AFNetworking.h */,
+				062ACC1F145859D000697444 /* UIImageView+AFNetworking.m */,
+			);
+			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		062ACC26145859D000697444 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+				062ACC27145859D000697444 /* JSONKit.h */,
+				062ACC28145859D000697444 /* JSONKit.m */,
+			);
+			path = JSONKit;
+			sourceTree = "<group>";
+		};
+		062ACC2A145859D000697444 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				062ACC2B145859D000697444 /* disqus.html */,
+				0678BCF414586FCA00443AFB /* disqus-logo.png */,
+				0678BCF514586FCA00443AFB /* disqus-logo@2x.png */,
+				0678BCF614586FCA00443AFB /* icon.png */,
+				062ACC2C145859D000697444 /* noavatar.png */,
+				0678BD001458705200443AFB /* icon@2x.png */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		062ACC49145859F200697444 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				062ACC05145859D000697444 /* Disquser-Info.plist */,
+				062ACC06145859D000697444 /* Disquser-Prefix.pch */,
+				062ACC29145859D000697444 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0636FF2A14585AE7006ED012 /* IADisquser */ = {
+			isa = PBXGroup;
+			children = (
+				0636FF2D14585AE7006ED012 /* IADisqusConfig.h */,
+				0636FF2B14585AE7006ED012 /* IADisqusComment.h */,
+				0636FF2C14585AE7006ED012 /* IADisqusComment.m */,
+				0636FF2E14585AE7006ED012 /* IADisquser.h */,
+				0636FF2F14585AE7006ED012 /* IADisquser.m */,
+			);
+			name = IADisquser;
+			path = ../../IADisquser;
+			sourceTree = "<group>";
+		};
+		06B3444C145425730096CAFA = {
+			isa = PBXGroup;
+			children = (
+				062ACBF7145859D000697444 /* Classes */,
+				062ACC09145859D000697444 /* Libraries */,
+				062ACC2A145859D000697444 /* Sources */,
+				06B3445A145425730096CAFA /* Frameworks */,
+				06B34458145425730096CAFA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		06B34458145425730096CAFA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				06B34457145425730096CAFA /* Disquser.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		06B3445A145425730096CAFA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				062A268D1457EBE5002E2427 /* QuartzCore.framework */,
+				06B3445B145425730096CAFA /* UIKit.framework */,
+				06B3445D145425730096CAFA /* Foundation.framework */,
+				06B3445F145425730096CAFA /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		06B34456145425730096CAFA /* Disquser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06B3446F145425730096CAFA /* Build configuration list for PBXNativeTarget "Disquser" */;
+			buildPhases = (
+				06B34453145425730096CAFA /* Sources */,
+				06B34454145425730096CAFA /* Frameworks */,
+				06B34455145425730096CAFA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Disquser;
+			productName = Disquser;
+			productReference = 06B34457145425730096CAFA /* Disquser.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		06B3444E145425730096CAFA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = Beetlebox;
+			};
+			buildConfigurationList = 06B34451145425730096CAFA /* Build configuration list for PBXProject "Disquser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 06B3444C145425730096CAFA;
+			productRefGroup = 06B34458145425730096CAFA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				06B34456145425730096CAFA /* Disquser */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		06B34455145425730096CAFA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				062ACC32145859D000697444 /* PostCommentViewController.xib in Resources */,
+				062ACC33145859D000697444 /* Disquser-Info.plist in Resources */,
+				062ACC43145859D000697444 /* disqus.html in Resources */,
+				062ACC44145859D000697444 /* noavatar.png in Resources */,
+				0678BCF814586FCA00443AFB /* disqus-logo.png in Resources */,
+				0678BCF914586FCA00443AFB /* disqus-logo@2x.png in Resources */,
+				0678BCFA14586FCA00443AFB /* icon.png in Resources */,
+				0678BD011458705200443AFB /* icon@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		06B34453145425730096CAFA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				062ACC2D145859D000697444 /* MenuViewController.m in Sources */,
+				062ACC2E145859D000697444 /* PostCommentViewController.m in Sources */,
+				062ACC2F145859D000697444 /* TableCommentsViewController.m in Sources */,
+				062ACC30145859D000697444 /* WebCommentsViewController.m in Sources */,
+				062ACC31145859D000697444 /* IACommentCell.m in Sources */,
+				062ACC34145859D000697444 /* IAAppDelegate.m in Sources */,
+				062ACC35145859D000697444 /* AFHTTPClient.m in Sources */,
+				062ACC36145859D000697444 /* AFHTTPRequestOperation.m in Sources */,
+				062ACC37145859D000697444 /* AFImageCache.m in Sources */,
+				062ACC38145859D000697444 /* AFImageRequestOperation.m in Sources */,
+				062ACC39145859D000697444 /* AFJSONRequestOperation.m in Sources */,
+				062ACC3A145859D000697444 /* AFNetworkActivityIndicatorManager.m in Sources */,
+				062ACC3B145859D000697444 /* AFPropertyListRequestOperation.m in Sources */,
+				062ACC3C145859D000697444 /* AFURLConnectionOperation.m in Sources */,
+				062ACC3D145859D000697444 /* AFXMLRequestOperation.m in Sources */,
+				062ACC3E145859D000697444 /* UIImageView+AFNetworking.m in Sources */,
+				062ACC41145859D000697444 /* JSONKit.m in Sources */,
+				062ACC42145859D000697444 /* main.m in Sources */,
+				0636FF3014585AE7006ED012 /* IADisqusComment.m in Sources */,
+				0636FF3114585AE7006ED012 /* IADisquser.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		06B3446D145425730096CAFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		06B3446E145425730096CAFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		06B34470145425730096CAFA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Disquser-Prefix.pch";
+				INFOPLIST_FILE = "Disquser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		06B34471145425730096CAFA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Disquser-Prefix.pch";
+				INFOPLIST_FILE = "Disquser-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06B34451145425730096CAFA /* Build configuration list for PBXProject "Disquser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06B3446D145425730096CAFA /* Debug */,
+				06B3446E145425730096CAFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		06B3446F145425730096CAFA /* Build configuration list for PBXNativeTarget "Disquser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				06B34470145425730096CAFA /* Debug */,
+				06B34471145425730096CAFA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 06B3444E145425730096CAFA /* Project object */;
+}
