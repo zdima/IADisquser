@@ -43,9 +43,9 @@ IADisquser is available under the MIT License.
 
 ## Credits
 
-IADisquser was created by [Ikhsan Assaat](https://github.com/ixnixnixn) in the development of Sajian Sedap iPad app.
+IADisquser was created by [Ikhsan Assaat](https://github.com/ixnixnixn) in the development of Beetlebox's Sajian Sedap iPad app.
 
 Contacts :
-- ixnixnixn@yahoo.com
-- @ixnixnixn
-- http://id.linkedin.com/in/ixnixnixn
+* ixnixnixn@yahoo.com
+* [@ixnixnixn] (http://twitter.com/ixnixnixn)
+* http://id.linkedin.com/in/ixnixnixn
