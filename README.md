@@ -1,6 +1,6 @@
 # IADisquser
-## A simple iOS wrapper for Disqus API v3.0 [Disqus API version 3.0 docs] (http://disqus.com/api/docs/)
-### Ever wanted to view your Disqus' comments from your site to your iOS app? Prefer a native way than javascript-embedding? Drag it to your project and implement it without a hassle!
+## A simple iOS wrapper for [Disqus API v3.0] (http://disqus.com/api/docs/)
+Ever wanted to view your Disqus' comments from your site to your iOS app? Prefer a native way than javascript-embedding? Drag it to your project and implement it without a hassle!
 
 With IADisquser, your iOS app can view and post comments with a couple of single method. Block-based callbacks make implementing disqus in your app fast & easy.  
 
