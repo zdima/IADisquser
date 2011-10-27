@@ -14,7 +14,7 @@ With IADisquser, your iOS app can view and post comments with a couple of single
 [IADisquser getCommentsFromThreadIdentifier:@"Identifier" 
                                     success:^(NSArray *comments) {
                                         for (IADisqusComment *aComment in comments)
-                                            NSLog(@"Raw comments from %@ : %@", aComment.rawMessage, aComment.authorName);
+                                            NSLog(@"Raw comments from %@ : %@", aComment.authorName, aComment.rawMessage);
                                      } fail:nil];
 ```
 
@@ -45,7 +45,6 @@ IADisquser is available under the MIT License.
 
 IADisquser was created by [Ikhsan Assaat](https://github.com/ixnixnixn) in the development of Beetlebox's Sajian Sedap iPad app.
 
-Contacts :
-* ixnixnixn@yahoo.com
 * [@ixnixnixn] (http://twitter.com/ixnixnixn)
+* ixnixnixn@yahoo.com
 * http://id.linkedin.com/in/ixnixnixn
