@@ -4,6 +4,8 @@ Ever wanted to view your Disqus' comments from your site to your iOS app? Prefer
 
 With IADisquser, your iOS app can view and post comments with a couple of single method. Block-based callbacks make implementing disqus in your app fast & easy.  
 
+If you want to check IADisquser in action, please use the sample project, then you can see & post your comments from the app, or on my [blogpost] (http://toogeekforpunk.com/2011/10/iadisquser-disqus-api-wrapper-for-ios/). 
+
 ## Example
 
 ### View Comments
@@ -14,7 +16,7 @@ With IADisquser, your iOS app can view and post comments with a couple of single
 [IADisquser getCommentsFromThreadIdentifier:@"Identifier" 
                                     success:^(NSArray *comments) {
                                         for (IADisqusComment *aComment in comments)
-                                            NSLog(@"Raw comments from %@ : %@", aComment.rawMessage, aComment.authorName);
+                                            NSLog(@"Raw comments from %@ : %@", aComment.authorName, aComment.rawMessage);
                                      } fail:nil];
 ```
 
@@ -24,8 +26,8 @@ With IADisquser, your iOS app can view and post comments with a couple of single
 // Method for getting comments from a Disqus Thread
 // Identifier & thread ID : http://docs.disqus.com/help/14/
 IADisqusComment *aComment = [[[IADisqusComment alloc] init] autorelease];
-aComment.authorName = Ikhsan Assaat;
-aComment.authorEmail = ixnixnixn@yahoo.com;
+aComment.authorName = @"Ikhsan Assaat";
+aComment.authorEmail = @"ixnixnixn@yahoo.com";
 aComment.rawMessage = @"Nice to meet you!";
 aComment.threadID = [NSNumber numberWithInteger:2000];
 [IADisquser postComment:aComment success:^{NSLog(@"Comment posted.")} fail:nil];
@@ -45,7 +47,6 @@ IADisquser is available under the MIT License.
 
 IADisquser was created by [Ikhsan Assaat](https://github.com/ixnixnixn) in the development of Beetlebox's Sajian Sedap iPad app.
 
-Contacts :
-* ixnixnixn@yahoo.com
 * [@ixnixnixn] (http://twitter.com/ixnixnixn)
+* ixnixnixn@yahoo.com
 * http://id.linkedin.com/in/ixnixnixn
