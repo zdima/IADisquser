@@ -130,6 +130,7 @@
     // make the parameters dictionary 
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
                                 DISQUS_API_SECRET, @"api_secret",
+                                DISQUS_FORUM_NAME, @"forum",
                                 link, @"thread:link",
                                 nil];
     

@@ -149,7 +149,8 @@
                                   [[self webView] loadHTMLString:[htmlString stringByReplacingOccurrencesOfString:@"<!--content-->" withString:contentHtml] baseURL:nil];
                                   [dateFormatter release];
                               } fail:^(NSError *error) {
-                                  contentHtml = @"<b>Gagal mengambil komentar-komentar...</b>";
+                                  NSLog(@"error : %@", error);
+                                  contentHtml = @"<b>Failed on fetching comments...</b>";
                                   [[self webView] loadHTMLString:[htmlString stringByReplacingOccurrencesOfString:@"<!--content-->" withString:contentHtml] baseURL:nil];  
                               }];
 }
