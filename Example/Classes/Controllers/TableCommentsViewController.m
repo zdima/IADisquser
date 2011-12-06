@@ -29,6 +29,9 @@
 #import "UIImageView+AFNetworking.h"
 #import "IACommentCell.h"
 
+#define CELL_CONTENT_WIDTH  320.0
+#define CELL_CONTENT_MARGIN 4.0
+
 @interface TableCommentsViewController (PrivateMethods)
 - (void)getComments;
 @end
@@ -47,7 +50,7 @@
 
 - (UIActivityIndicatorView *)indicator {
     if (!indicator) {
-        indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [indicator setCenter:CGPointMake(self.tableView.center.x, self.tableView.center.y-64.0)];
         [indicator setHidesWhenStopped:YES];
         [self.view addSubview:indicator];
@@ -80,7 +83,11 @@
 #pragma mark - Table view data source
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 140.0;
+    NSString *comment = [(IADisqusComment *)[self.comments objectAtIndex:indexPath.row] rawMessage];
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000);
+    CGSize size = [comment sizeWithFont:[UIFont fontWithName:@"Helvetica" size:12] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    return MAX(size.height + 80.0, 96.0);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -104,7 +111,12 @@
     [dateFormatter setDateFormat:@"dd/MM/yy HH:mm:ss"];
     cell.dateLabel.text = [dateFormatter stringFromDate:aComment.date];
     
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000);
+    CGSize size = [aComment.rawMessage sizeWithFont:[UIFont fontWithName:@"Helvetica" size:12.0] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
     cell.commentLabel.text = aComment.rawMessage;
+    cell.commentLabel.frame = CGRectMake(4.0, 65.0, 
+                                         CELL_CONTENT_WIDTH - (2 * CELL_CONTENT_MARGIN), 
+                                         MAX(size.height, 10.0) + (2 * CELL_CONTENT_MARGIN));
     
     [cell.imageView setImageWithURL:[NSURL URLWithString:aComment.authorAvatar] 
                    placeholderImage:[UIImage imageNamed:@"noavatar.png"]];

@@ -49,8 +49,10 @@
         commentLabel = [[UILabel alloc] init];
         [commentLabel setTextColor:[UIColor colorWithWhite:0.44 alpha:1.0]];
         [commentLabel setFont:[UIFont fontWithName:@"Helvetica" size:12.0]];
+        [commentLabel setMinimumFontSize:12.0];
         [commentLabel setBackgroundColor:[UIColor clearColor]];
-        [commentLabel setNumberOfLines:4];
+        [commentLabel setLineBreakMode:UILineBreakModeWordWrap];
+        [commentLabel setNumberOfLines:0];
         [self.contentView addSubview:commentLabel];
         
         imageView = [[UIImageView alloc] init];
@@ -68,7 +70,7 @@
     [imageView setFrame:CGRectMake(4.0, 8.0, 44.0, 44.0)];
     [nameLabel setFrame:CGRectMake(60.0, 8.0, 200.0, 20.0)];
     [dateLabel setFrame:CGRectMake(60.0, 32.0, 200.0, 15.0)];
-    [commentLabel setFrame:CGRectMake(4.0, 65.0, 300.0, 60.0)];
+    //[commentLabel setFrame:CGRectMake(4.0, 65.0, 300.0, 60.0)];
 }
 
 - (void)drawRect:(CGRect)rect {

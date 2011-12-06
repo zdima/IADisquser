@@ -68,7 +68,7 @@
 
 - (UIActivityIndicatorView *)indicator {
     if (!indicator) {
-        indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [indicator setCenter:[self webView].center];
         [indicator setHidesWhenStopped:YES];
         [self.view addSubview:indicator];
