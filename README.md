@@ -4,6 +4,18 @@ Ever wanted to view your Disqus' comments from your site to your iOS app? Prefer
 
 With IADisquser, your iOS app can view and post comments with a couple of single method. Block-based callbacks make implementing disqus in your app fast & easy.  
 
+All you need are forum name, api secret key and api public key to put in you config file. After that you can fetch the comments using identifier or link. This is required parameters of the fetcher method. In my sample code, I'm using thread identifier, ex : (`'54 http://toogeekforpunk.com/?p=54'`). You can check the thread identifier by using view source from your browser and search the code that Disqus generate ex : (`var disqus_identifier = '<your identifier>'`).
+
+```javascript
+...
+/* <![CDATA[ */
+    var disqus_url = 'http://toogeekforpunk.com/2011/10/iadisquser-disqus-api-wrapper-for-ios/';
+    var disqus_identifier = '54 http://toogeekforpunk.com/?p=54';
+    var disqus_container_id = 'disqus_thread';
+    var disqus_domain = 'disqus.com';
+...
+```
+
 If you want to check IADisquser in action, please use the sample project, then you can see & post your comments from the app, or on my [blogpost] (http://toogeekforpunk.com/2011/10/iadisquser-disqus-api-wrapper-for-ios/). 
 
 ## Example
