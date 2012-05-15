@@ -8,11 +8,12 @@ All you need are forum name, api secret key and api public key to put in you con
 
 ```javascript
 ...
-/* <![CDATA[ */
-    var disqus_url = 'http://toogeekforpunk.com/2011/10/iadisquser-disqus-api-wrapper-for-ios/';
-    var disqus_identifier = '54 http://toogeekforpunk.com/?p=54';
+/* <![CDATA[ */    
+    var disqus_url = 'http://3kunci.com/iadisquser-disqus-api-wrapper-for-ios/';
+    var disqus_identifier = '85 http://toogeekforpunk.com/?p=54';
     var disqus_container_id = 'disqus_thread';
     var disqus_domain = 'disqus.com';
+    var disqus_shortname = '3kunci';
 ...
 ```
 
@@ -25,7 +26,7 @@ If you want to check IADisquser in action, please use the sample project, then y
 ``` objective-c
 // Method for getting comments from a Disqus Thread
 // Identifier & thread ID : http://docs.disqus.com/help/14/
-[IADisquser getCommentsFromThreadIdentifier:@"Identifier" 
+[IADisquser getCommentsFromThreadIdentifier:@"<Your Identifier>" 
                                     success:^(NSArray *comments) {
                                         for (IADisqusComment *aComment in comments)
                                             NSLog(@"Raw comments from %@ : %@", aComment.authorName, aComment.rawMessage);
