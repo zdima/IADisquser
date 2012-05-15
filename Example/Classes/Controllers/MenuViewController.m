@@ -52,7 +52,7 @@
     [self.tableView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
     // get comments using thread identifier (also can use thread ID or link)
-    threadIdentifier = [@"54 http://toogeekforpunk.com/?p=54" retain];
+    threadIdentifier = [@"85 http://toogeekforpunk.com/?p=54" retain];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

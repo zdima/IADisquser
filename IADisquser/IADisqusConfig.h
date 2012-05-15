@@ -27,6 +27,6 @@
 // Disqus API version 3.0 : http://disqus.com/api/docs/
 
 #define DISQUS_BASE_URL     @"http://disqus.com/api/3.0/"
-#define DISQUS_FORUM_NAME   @"toogeekforpunk"
+#define DISQUS_FORUM_NAME   @"3kunci"
 #define DISQUS_API_SECRET   @"cGOvbAYKzWXFffL1h2uM1P2jIp3i816FR0tfMpmb5xHeAHbIJQRt1HYN1trZRmZ2"
 #define DISQUS_API_PUBLIC   @"KyaiUKCMWJIPpYXpXr6C3T134MhV3hpqpBrbbaHPorjkp4Mb8FNisVxmcKCz2FTK"
