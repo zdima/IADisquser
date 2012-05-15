@@ -16,7 +16,7 @@ All you need are forum name, api secret key and api public key to put in you con
 ...
 ```
 
-If you want to check IADisquser in action, please use the sample project, then you can see & post your comments from the app, or on my [blogpost] (http://toogeekforpunk.com/2011/10/iadisquser-disqus-api-wrapper-for-ios/). 
+If you want to check IADisquser in action, please use the sample project, then you can see & post your comments from the app, or on my [blogpost] (http://3kunci.com/iadisquser-disqus-api-wrapper-for-ios/). 
 
 ## Example
 
