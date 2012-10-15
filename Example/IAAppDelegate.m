@@ -32,17 +32,12 @@
 @synthesize window = _window;
 @synthesize menuViewController = _menuViewController;
 
-- (void)dealloc {
-    [_window release];
-    [_menuViewController release];
-    [super dealloc];
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // allocate instaces
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.menuViewController = [[[MenuViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
-    UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:self.menuViewController] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.menuViewController = [[MenuViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.menuViewController];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window setRootViewController:navigationController];

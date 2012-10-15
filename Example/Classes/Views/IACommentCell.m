@@ -83,7 +83,7 @@
     UIColor *endColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     
     NSArray *colors = [NSArray arrayWithObjects:(id)startColor.CGColor, (id)endColor.CGColor, nil];
-    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (CFArrayRef)colors, locations);
+    CGGradientRef gradient = CGGradientCreateWithColors(colorSpace, (__bridge CFArrayRef)colors, locations);
     
     CGPoint startPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMinY(rect));
     CGPoint endPoint = CGPointMake(CGRectGetMidX(rect), CGRectGetMaxY(rect));
@@ -112,12 +112,5 @@
     CGColorSpaceRelease(colorSpace);
 }
 
-- (void)dealloc {
-    [nameLabel release];
-    [imageView release];
-    [dateLabel release];
-    [commentLabel release];
-    [super dealloc];
-}
 
 @end

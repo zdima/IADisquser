@@ -33,9 +33,9 @@
     UILabel *commentLabel;
 }
 
-@property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) UILabel *nameLabel;
-@property (nonatomic, retain) UILabel *dateLabel;
-@property (nonatomic, retain) UILabel *commentLabel;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UILabel *dateLabel;
+@property (nonatomic, strong) UILabel *commentLabel;
 
 @end

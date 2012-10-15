@@ -39,14 +39,6 @@
 
 @synthesize threadIdentifier;
 
-- (void)dealloc {
-    [threadIdentifier release];
-    [usernameField release];
-    [emailField release];
-    [commentField release];
-    [indicator release];
-    [super dealloc];
-}
 
 #pragma mark - View lifecycle
 
@@ -59,20 +51,16 @@
     [commentField.layer setCornerRadius:8.0];
     
     // make a bar button item for post and dismiss
-    UIBarButtonItem *cancelButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss)] autorelease];
-    UIBarButtonItem *postButton = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(post)] autorelease];
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(dismiss)];
+    UIBarButtonItem *postButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(post)];
     [self.navigationItem setLeftBarButtonItem:cancelButton];
     [self.navigationItem setRightBarButtonItem:postButton];
 }
 
 - (void)viewDidUnload {
-    [usernameField release];
     usernameField = nil;
-    [emailField release];
     emailField = nil;
-    [commentField release];
     commentField = nil;
-    [indicator release];
     indicator = nil;
     [super viewDidUnload];
     
@@ -126,7 +114,6 @@
                                           cancelButtonTitle:@"Oh, okay" 
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 - (void)post {
@@ -148,7 +135,7 @@
     [IADisquser getThreadIdWithIdentifier:threadIdentifier 
                                   success:^(NSNumber *threadID) {
                                       // make the comment
-                                      IADisqusComment *aComment = [[[IADisqusComment alloc] init] autorelease];
+                                      IADisqusComment *aComment = [[IADisqusComment alloc] init];
                                       aComment.authorName = usernameField.text;
                                       aComment.authorEmail = emailField.text;
                                       aComment.rawMessage = commentField.text;

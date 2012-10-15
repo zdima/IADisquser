@@ -36,12 +36,6 @@
 
 @synthesize threadIdentifier;
 
-- (void)dealloc {
-    [webView release];
-    [indicator release];
-    [threadIdentifier release];
-    [super dealloc];
-}
 
 - (void)hideGradientBackground:(UIView*)theView {
     for (UIView* subview in theView.subviews) {
@@ -84,7 +78,7 @@
     
     // set view's interface
     [self.view setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
-    UIBarButtonItem *refresh = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(getComments)] autorelease];
+    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(getComments)];
     [self.navigationItem setRightBarButtonItem:refresh];
     [self webView];
     [self indicator];
@@ -96,9 +90,7 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     
-    [webView release];
     webView = nil;
-    [indicator release];
     indicator = nil;
 }
 
@@ -147,7 +139,6 @@
                                   }
                                   
                                   [[self webView] loadHTMLString:[htmlString stringByReplacingOccurrencesOfString:@"<!--content-->" withString:contentHtml] baseURL:nil];
-                                  [dateFormatter release];
                               } fail:^(NSError *error) {
                                   NSLog(@"error : %@", error);
                                   contentHtml = @"<b>Failed on fetching comments...</b>";

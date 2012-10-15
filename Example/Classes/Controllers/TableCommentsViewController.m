@@ -40,13 +40,6 @@
 
 @synthesize comments, threadIdentifier;
 
-- (void)dealloc {
-    [comments release];
-    [indicator release];
-    [threadIdentifier release];
-    
-    [super dealloc];
-}
 
 - (UIActivityIndicatorView *)indicator {
     if (!indicator) {
@@ -67,7 +60,7 @@
     // set view's interface
     [self.tableView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
-    UIBarButtonItem *refresh = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(getComments)] autorelease];
+    UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(getComments)];
     [self.navigationItem setRightBarButtonItem:refresh];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
@@ -99,7 +92,7 @@
     
     IACommentCell *cell = (IACommentCell*) [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[IACommentCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[IACommentCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
@@ -107,7 +100,7 @@
     IADisqusComment *aComment = [self.comments objectAtIndex:indexPath.row];
     cell.nameLabel.text = aComment.authorName;
     
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"dd/MM/yy HH:mm:ss"];
     cell.dateLabel.text = [dateFormatter stringFromDate:aComment.date];
     
@@ -161,7 +154,6 @@
                                                                                   cancelButtonTitle:@"OK" 
                                                                                    otherButtonTitles:nil];
                                             [alert show];
-                                            [alert release];
                                         }];
 }
 

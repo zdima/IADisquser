@@ -27,7 +27,6 @@
 #import "IADisquser.h"
 #import "IADisqusConfig.h"
 #import "AFHTTPClient.h"
-#import "JSONKit.h"
 
 @implementation IADisquser
 
@@ -37,11 +36,11 @@
     AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:DISQUS_BASE_URL]];
     
     // make and send a get request
-    [disqusClient getPath:@"threads/listPosts.json" 
+    [disqusClient getPath:@"threads/listPosts.json"
                parameters:parameters
-                  success:^(id object) {
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       // fetch the json response to a dictionary
-                      NSDictionary *responseDictionary = [object objectFromJSONData];
+                      NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                       
                       // check the code (success is 0)
                       NSNumber *code = [responseDictionary objectForKey:@"code"];
@@ -62,7 +61,7 @@
                           } else {
                               // setting date format
                               NSDateFormatter *df = [[NSDateFormatter alloc] init];
-                              NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+                              NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
                               [df setLocale:locale];
                               [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                               
@@ -86,18 +85,16 @@
                                   
                                   // add the comment to the mutable array
                                   [comments addObject:aDisqusComment];
-                                  [aDisqusComment release];
                               }
                               
                               // release date formatting
-                              [df release];
                               
                               // pass it to the block
                               successBlock(comments);
                           }
                       }
                   }
-                  failure:^(NSHTTPURLResponse *response, NSError *error) {
+                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       // pass error to the block
                       failBlock(error);
                   }];
@@ -145,11 +142,11 @@
     AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:DISQUS_BASE_URL]];
     
     // fire the request
-    [disqusClient getPath:@"threads/details.json" 
-               parameters:parameters 
-                  success:^(id object) {
+    [disqusClient getPath:@"threads/details.json"
+               parameters:parameters
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       // fetch the json response to a dictionary
-                      NSDictionary *responseDictionary = [object objectFromJSONData];
+                      NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                       
                       // get the code
                       NSNumber *code = [responseDictionary objectForKey:@"code"];
@@ -166,7 +163,7 @@
                           successBlock(threadId);
                       }
                   }
-                  failure:^(NSHTTPURLResponse *response, NSError *error) {
+                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       failBlock(error);
                   }];
 }
@@ -200,16 +197,10 @@
     [disqusClient setParameterEncoding:AFFormURLParameterEncoding];
     
     [disqusClient postPath:@"posts/create.json"
-                parameters:[NSDictionary dictionaryWithObjectsAndKeys:
-                            DISQUS_API_SECRET, @"api_secret",
-                            comment.threadID, @"thread",
-                            comment.authorName, @"author_name",
-                            comment.authorEmail, @"author_email",
-                            comment.rawMessage, @"message",
-                            nil] 
-                   success:^(id object) {
+                parameters:@{@"api_secret" : DISQUS_API_SECRET, @"thread" : comment.threadID, @"author_name" : comment.authorName, @"author_email" : comment.authorEmail, @"message" : comment.rawMessage}
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                        // fetch the json response to a dictionary
-                       NSDictionary *responseDictionary = [object objectFromJSONData];
+                       NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
                        
                        // check the code (success is 0)
                        NSNumber *code = [responseDictionary objectForKey:@"code"];
@@ -224,8 +215,7 @@
                            successBlock();
                        }
                    }
-                   failure:^(NSHTTPURLResponse *response, NSError *error) {
-                       NSLog(@"response : %@", [response allHeaderFields]);
+                   failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                        failBlock(error);
                    }];
 }

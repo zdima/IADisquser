@@ -39,10 +39,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)dealloc {
-    [threadIdentifier release];
-    [super dealloc];
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,7 +48,7 @@
     [self.tableView setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
     
     // get comments using thread identifier (also can use thread ID or link)
-    threadIdentifier = [@"85 http://toogeekforpunk.com/?p=54" retain];
+    threadIdentifier = @"85 http://toogeekforpunk.com/?p=54";
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -90,7 +86,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
@@ -120,7 +116,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     if (section == 1) {
-        UIImageView *imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 100.0)] autorelease];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 0.0, 320.0, 100.0)];
         [imageView setImage:[UIImage imageNamed:@"disqus-logo.png"]];
         [imageView setContentMode:UIViewContentModeCenter];
         
@@ -150,24 +146,24 @@
 #pragma mark - Class Methods
 
 - (void)openWebView {
-    WebCommentsViewController *webCommentsViewController = [[[WebCommentsViewController alloc] init] autorelease];
+    WebCommentsViewController *webCommentsViewController = [[WebCommentsViewController alloc] init];
     webCommentsViewController.title = @"Web View";
     webCommentsViewController.threadIdentifier = threadIdentifier;
     [self.navigationController pushViewController:webCommentsViewController animated:YES];
 }
 
 - (void)openTableView {
-    TableCommentsViewController *tableCommentsViewController = [[[TableCommentsViewController alloc] init] autorelease];
+    TableCommentsViewController *tableCommentsViewController = [[TableCommentsViewController alloc] init];
     tableCommentsViewController.title = @"Table View";
     tableCommentsViewController.threadIdentifier = threadIdentifier;
     [self.navigationController pushViewController:tableCommentsViewController animated:YES];    
 }
 
 - (void)openPostComment {
-    PostCommentViewController *postCommentViewController = [[[PostCommentViewController alloc] init] autorelease];
+    PostCommentViewController *postCommentViewController = [[PostCommentViewController alloc] init];
     postCommentViewController.title = @"Post a Comment";
     postCommentViewController.threadIdentifier = threadIdentifier;
-    UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:postCommentViewController] autorelease];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postCommentViewController];
     
     [self presentModalViewController:navigationController animated:YES];
 }

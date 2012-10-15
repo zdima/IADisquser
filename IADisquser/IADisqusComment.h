@@ -39,11 +39,11 @@
 @property (nonatomic, copy) NSString *rawMessage;
 @property (nonatomic, copy) NSString *htmlMessage;
 
-@property (nonatomic, retain) NSDate *date;
-@property (nonatomic, retain) NSNumber *likes;
-@property (nonatomic, retain) NSNumber *dislikes;
+@property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSNumber *likes;
+@property (nonatomic, strong) NSNumber *dislikes;
 @property (nonatomic, copy) NSString *ipAddress;
 
-@property (nonatomic, retain) NSNumber *threadID;
+@property (nonatomic, strong) NSNumber *threadID;
 
 @end
