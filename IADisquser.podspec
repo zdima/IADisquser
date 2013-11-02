@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "IADisquser"
-  s.version      = "1.0.0"
+  s.version      = '1.0.0'
   s.summary      = 'A simple iOS wrapper for [Disqus API v3.0]'
   s.homepage     = 'https://github.com/zdima/IADisquser'
   s.description  = <<-DESC
