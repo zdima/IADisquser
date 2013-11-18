@@ -39,6 +39,7 @@
 		4D60789B162BA281005694E3 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D607892162BA281005694E3 /* UIImageView+AFNetworking.m */; };
 		4D6078A1162BA8CA005694E3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6078A0162BA8CA005694E3 /* SystemConfiguration.framework */; };
 		4D6078A7162BAA82005694E3 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D6078A6162BAA82005694E3 /* MobileCoreServices.framework */; };
+		5F2F62B1183A581E00D9D5E6 /* IADisqusConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F2F62B0183A581E00D9D5E6 /* IADisqusConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		4D607892162BA281005694E3 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		4D6078A0162BA8CA005694E3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		4D6078A6162BAA82005694E3 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		5F2F62B0183A581E00D9D5E6 /* IADisqusConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IADisqusConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				0636FF2D14585AE7006ED012 /* IADisqusConfig.h */,
+				5F2F62B0183A581E00D9D5E6 /* IADisqusConfig.m */,
 				0636FF2B14585AE7006ED012 /* IADisqusComment.h */,
 				0636FF2C14585AE7006ED012 /* IADisqusComment.m */,
 				0636FF2E14585AE7006ED012 /* IADisquser.h */,
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				062ACC2D145859D000697444 /* MenuViewController.m in Sources */,
+				5F2F62B1183A581E00D9D5E6 /* IADisqusConfig.m in Sources */,
 				062ACC2E145859D000697444 /* PostCommentViewController.m in Sources */,
 				062ACC2F145859D000697444 /* TableCommentsViewController.m in Sources */,
 				062ACC30145859D000697444 /* WebCommentsViewController.m in Sources */,

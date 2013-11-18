@@ -33,7 +33,7 @@
 #pragma mark - View comments
 + (void)getCommentsWithParameters:(NSDictionary *)parameters success:(DisqusFetchCommentsSuccess)successBlock fail:(DisqusFail)failBlock {
     // make a http client for disqus
-    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:DISQUS_BASE_URL]];
+    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:[IADisqusConfig baseURL]]];
     
     // make and send a get request
     [disqusClient getPath:@"threads/listPosts.json"
@@ -103,7 +103,7 @@
 + (void)getCommentsFromThreadID:(NSString *)threadID success:(DisqusFetchCommentsSuccess)successBlock fail:(DisqusFail)failBlock {
     // make the parameters dictionary 
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                DISQUS_API_SECRET, @"api_secret",
+                                [IADisqusConfig apiSecret], @"api_secret",
                                 threadID, @"thread",
                                 nil];
     
@@ -114,8 +114,8 @@
 + (void)getCommentsFromThreadIdentifier:(NSString *)threadIdentifier success:(DisqusFetchCommentsSuccess)successBlock fail:(DisqusFail)failBlock {
     // make the parameters dictionary 
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                DISQUS_API_SECRET, @"api_secret",
-                                DISQUS_FORUM_NAME, @"forum",
+                                [IADisqusConfig apiSecret], @"api_secret",
+                                [IADisqusConfig forumName], @"forum",
                                 threadIdentifier, @"thread:ident",
                                 nil];
     
@@ -126,8 +126,8 @@
 + (void)getCommentsFromThreadLink:(NSString *)link success:(DisqusFetchCommentsSuccess)successBlock fail:(DisqusFail)failBlock {
     // make the parameters dictionary 
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                DISQUS_API_SECRET, @"api_secret",
-                                DISQUS_FORUM_NAME, @"forum",
+                                [IADisqusConfig apiSecret], @"api_secret",
+                                [IADisqusConfig forumName], @"forum",
                                 link, @"thread:link",
                                 nil];
     
@@ -139,7 +139,7 @@
 #pragma mark - Post comments
 + (void)getThreadIdParameters:(NSDictionary *)parameters success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock {
     // make a http client for disqus
-    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:DISQUS_BASE_URL]];
+    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:[IADisqusConfig baseURL]]];
     
     // fire the request
     [disqusClient getPath:@"threads/details.json"
@@ -171,8 +171,8 @@
 + (void)getThreadIdWithIdentifier:(NSString *)threadIdentifier success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock {
     // make parameters
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                DISQUS_API_SECRET, @"api_secret",
-                                DISQUS_FORUM_NAME, @"forum",
+                                [IADisqusConfig apiSecret], @"api_secret",
+                                [IADisqusConfig forumName], @"forum",
                                 threadIdentifier, @"thread:ident",
                                 nil];
     
@@ -182,8 +182,8 @@
 
 + (void)getThreadIdWithLink:(NSString *)link success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock {
     NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
-                                DISQUS_API_SECRET, @"api_secret",
-                                DISQUS_FORUM_NAME, @"forum",
+                                [IADisqusConfig apiSecret], @"api_secret",
+                                [IADisqusConfig forumName], @"forum",
                                 link, @"thread:link",
                                 nil];
     
@@ -193,11 +193,11 @@
 
 + (void)postComment:(IADisqusComment *)comment success:(DisqusPostCommentSuccess)successBlock fail:(DisqusFail)failBlock {
     // make a disqus client 
-    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:DISQUS_BASE_URL]];
+    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:[IADisqusConfig baseURL]]];
     [disqusClient setParameterEncoding:AFFormURLParameterEncoding];
     
     [disqusClient postPath:@"posts/create.json"
-                parameters:@{@"api_secret" : DISQUS_API_SECRET, @"thread" : comment.threadID, @"author_name" : comment.authorName, @"author_email" : comment.authorEmail, @"message" : comment.rawMessage}
+                parameters:@{@"api_secret" : [IADisqusConfig apiSecret], @"thread" : comment.threadID, @"author_name" : comment.authorName, @"author_email" : comment.authorEmail, @"message" : comment.rawMessage}
                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                        // fetch the json response to a dictionary
                        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
