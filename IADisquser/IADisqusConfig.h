@@ -26,6 +26,8 @@
 
 // Disqus API version 3.0 : http://disqus.com/api/docs/
 
+#import <Foundation/Foundation.h>
+
 @interface IADisqusConfig : NSObject
 
 /*
