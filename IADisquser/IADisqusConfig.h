@@ -33,12 +33,20 @@
 /*
  * initialize will read NSUserDefaults to get default parameters
  */
--(void)initialize;
+-(void)initializeInstance;
 
 +(NSString*)baseURL;
 +(NSString*)forumName;
 +(NSString*)apiSecret;
 +(NSString*)apiPublic;
++(NSString*)apiAccessToken;
++(NSString*)authorAccessToken;
++(NSString*)authorRefreshToken;
++(NSDate*)  authorAccessTokenExpire;
++(NSString*)authorName;
++(NSString*)authorEMail;
+
++(BOOL)isRegistered;
 
 /*
  * Application can set defailt or new parameters when require
@@ -47,6 +55,12 @@
 +(void)setDefaultForumName:(NSString*)name;
 +(void)setDefaultApiSecret:(NSString*)secretKey;
 +(void)setDefaultApiPublic:(NSString*)publicKey;
++(void)setApiAccessToken:(NSString*)accessToken;
++(void)setAuthorAccessToken:(NSString*)accessToken;
++(void)setAuthorRefreshToken:(NSString*)refreshToken;
++(void)setAuthorAccessTokenExpire:(NSDate*)accessTokenExpire;
++(void)setAuthorName:(NSString*)name;
++(void)setAuthorEMail:(NSString*)email;
 
 @end
 
