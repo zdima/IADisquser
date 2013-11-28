@@ -31,11 +31,15 @@ typedef void (^DisqusFetchCommentsSuccess)(NSArray *);
 
 typedef void (^DisqusGetThreadIdSuccess)(NSNumber *);
 typedef void (^DisqusPostCommentSuccess)(void);
+typedef void (^DisqusAuthenticateSuccess)(void);
 typedef void (^DisqusFail)(NSError *);
 
 @class IADisqusComment;
 
 @interface IADisquser : NSObject
+
++(void)authenticateUser:(NSString*)name password:(NSString*)password success:(DisqusAuthenticateSuccess)successBlock fail:(DisqusFail)failBlock;
++(BOOL)refreshToken;
 
 #pragma mark - View comments
 + (void)getCommentsFromThreadID:(NSString *)threadID success:(DisqusFetchCommentsSuccess)successBlock fail:(DisqusFail)failBlock;
@@ -45,6 +49,7 @@ typedef void (^DisqusFail)(NSError *);
 #pragma mark - Post comments
 + (void)getThreadIdWithIdentifier:(NSString *)threadIdentifier success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock;
 + (void)getThreadIdWithLink:(NSString *)link success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock;
++ (void)createThreadIdWithLink:(NSString *)link title:(NSString *)title success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock ;
 + (void)postComment:(IADisqusComment *)comment success:(DisqusPostCommentSuccess)successBlock fail:(DisqusFail)failBlock;
 
 @end

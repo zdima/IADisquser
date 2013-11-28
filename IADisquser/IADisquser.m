@@ -30,6 +30,106 @@
 
 @implementation IADisquser
 
+static NSCondition* refreshCondition = nil;
+
++(void)authenticateUser:(NSString*)name password:(NSString*)password success:(DisqusAuthenticateSuccess)successBlock fail:(DisqusFail)failBlock
+{
+    if(!name)
+        name = [IADisqusConfig authorName];
+    
+    // POST disqus.com/api/oauth/2.0/access_token/?grant_type=password&client_secret=SECRET_KEY&client_id=PUBLIC_KEY&scope=read,write
+    
+    NSDictionary* parameters = @{@"scope" : @"read,write",
+                                 @"client_id" : [IADisqusConfig apiPublic],
+                                 @"client_secret" : [IADisqusConfig apiSecret],
+                                 @"grant_type" : @"password"
+                                 };
+    
+    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://disqus.com/api/oauth/2.0/"]];
+    
+    [disqusClient setAuthorizationHeaderWithUsername:name password:password];
+    
+    // make and send a get request
+    [disqusClient postPath:@"access_token/?"
+               parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                   NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+                   /*
+                    {
+                    "access_token": "c2d06abacfbb40179e47f62f06546ea9",
+                    "refresh_token": "9182211bf2f746a4b5c5b1e3766443d6",
+                    "expires_in": 2592000,
+                    "username": "batman"
+                    "user_id": "947103743"
+                    }
+                    */
+                   [IADisqusConfig setAuthorAccessToken:[responseDictionary objectForKey:@"access_token"]];
+                   [IADisqusConfig setAuthorAccessTokenExpire:[NSDate dateWithTimeIntervalSinceNow:[[responseDictionary objectForKey:@"expires_in"] longValue]]];
+                   [IADisqusConfig setAuthorName:[responseDictionary objectForKey:@"username"]];
+                   if(successBlock)
+                       successBlock();
+               } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                   if(failBlock)
+                       failBlock(error);
+               }];
+}
+
++(BOOL)refreshToken
+{
+    if(refreshCondition)
+        return FALSE;
+    refreshCondition = [[NSCondition alloc] init];
+    
+    __block int refreshResult = 0;
+    /*
+     POST https://disqus.com/api/oauth/2.0/access_token/?
+     grant_type=refresh_token&
+     client_id=PUBLIC_KEY&
+     client_secret=SECRET_KEY&
+     refresh_token=REFRESH_TOKEN
+     */
+    NSDictionary* parameters = @{@"client_id" : [IADisqusConfig apiPublic],
+                                 @"client_secret" : [IADisqusConfig apiSecret],
+                                 @"grant_type" : @"refresh_token",
+                                 @"refresh_token" : [IADisqusConfig authorRefreshToken]
+                                 };
+    
+    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:@"http://disqus.com/api/oauth/2.0/"]];
+    
+    // make and send a get request
+    [disqusClient postPath:@"access_token/?"
+                parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+                    /*
+                     {
+                     "access_token": "c2d06abacfbb40179e47f62f06546ea9",
+                     "refresh_token": "9182211bf2f746a4b5c5b1e3766443d6",
+                     "expires_in": 2592000,
+                     "username": "batman"
+                     "user_id": "947103743"
+                     }
+                     */
+                    [IADisqusConfig setAuthorAccessToken:[responseDictionary objectForKey:@"access_token"]];
+                    [IADisqusConfig setAuthorAccessTokenExpire:[NSDate dateWithTimeIntervalSinceNow:[[responseDictionary objectForKey:@"expires_in"] longValue]]];
+                    [IADisqusConfig setAuthorName:[responseDictionary objectForKey:@"username"]];
+                    [refreshCondition lock];
+                    refreshResult = 1;
+                    [refreshCondition signal];
+                    [refreshCondition unlock];
+                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                    [refreshCondition lock];
+                    refreshResult = 2;
+                    [refreshCondition signal];
+                    [refreshCondition unlock];
+                }];
+    [refreshCondition lock];
+    while(refreshResult==0)
+        [refreshCondition wait];
+    [refreshCondition unlock];
+    if(refreshResult==1)
+        return YES;
+    return NO;
+}
+
 #pragma mark - View comments
 + (void)getCommentsWithParameters:(NSDictionary *)parameters success:(DisqusFetchCommentsSuccess)successBlock fail:(DisqusFail)failBlock {
     // make a http client for disqus
@@ -191,13 +291,69 @@
     [IADisquser getThreadIdParameters:parameters success:successBlock fail:failBlock];
 }
 
++ (void)createThreadIdWithLink:(NSString *)link title:(NSString *)title success:(DisqusGetThreadIdSuccess)successBlock fail:(DisqusFail)failBlock {
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [IADisqusConfig apiSecret], @"api_secret",
+                                [IADisqusConfig apiAccessToken], @"access_token",
+                                [IADisqusConfig forumName], @"forum",
+                                title, @"title",
+                                link, @"url",
+                                nil];
+    
+    // make a http client for disqus
+    AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:[IADisqusConfig baseURL]]];
+    
+    // fire the request
+    [disqusClient postPath:@"threads/create.json"
+                parameters:parameters
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      // fetch the json response to a dictionary
+                      NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
+                      
+                      // get the code
+                      NSNumber *code = [responseDictionary objectForKey:@"code"];
+                      
+                      if ([code integerValue] != 0) {
+                          // there's an error
+                          NSString *errorMessage = @"Error on getting the thread ID from disqus";
+                          
+                          NSError *error = [NSError errorWithDomain:@"com.ikhsanassaat.disquser" code:26 userInfo:[NSDictionary dictionaryWithObjectsAndKeys:errorMessage, NSLocalizedDescriptionKey, nil]];
+                          failBlock(error);
+                      } else {
+                          // get the thread ID, pass it to the block
+                          NSNumber *threadId = [[responseDictionary objectForKey:@"response"] objectForKey:@"id"];
+                          successBlock(threadId);
+                      }
+                  }
+                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      failBlock(error);
+                  }];
+}
+
 + (void)postComment:(IADisqusComment *)comment success:(DisqusPostCommentSuccess)successBlock fail:(DisqusFail)failBlock {
     // make a disqus client 
     AFHTTPClient *disqusClient = [AFHTTPClient clientWithBaseURL:[NSURL URLWithString:[IADisqusConfig baseURL]]];
     [disqusClient setParameterEncoding:AFFormURLParameterEncoding];
-    
+    NSDictionary* params;
+    NSString* accessToken = [IADisqusConfig authorAccessToken];
+    if(accessToken) {
+        params = @{
+                   @"api_secret" : [IADisqusConfig apiSecret],
+                   @"access_token" : accessToken,
+                   @"thread" : comment.threadID,
+                   @"author_name" : comment.authorName,
+                   @"author_email" : comment.authorEmail,
+                   @"message" : comment.rawMessage};
+    } else {
+        params = @{
+                   @"api_secret" : [IADisqusConfig apiSecret],
+                   @"thread" : comment.threadID,
+                   @"author_name" : comment.authorName,
+                   @"author_email" : comment.authorEmail,
+                   @"message" : comment.rawMessage};
+    }
     [disqusClient postPath:@"posts/create.json"
-                parameters:@{@"api_secret" : [IADisqusConfig apiSecret], @"thread" : comment.threadID, @"author_name" : comment.authorName, @"author_email" : comment.authorEmail, @"message" : comment.rawMessage}
+                parameters:params
                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
                        // fetch the json response to a dictionary
                        NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
